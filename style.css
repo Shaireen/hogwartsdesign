@@ -77,6 +77,9 @@ body {
   transform: translate(-50%, -50%);
 }
 
+button {
+  cursor: pointer;
+}
 nav {
   height: 80px;
   font-family: "harry_pregular";
@@ -153,6 +156,20 @@ p span {
 }
 
 /* styling for the filters area */
+
+#searchInput {
+  height: 40px;
+  padding: 5px;
+  border: none;
+  width: 90%;
+  margin: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  background: #1c1c1c;
+  color: white;
+}
 
 .filters {
   display: grid;
@@ -282,7 +299,7 @@ p span {
 
 i {
   font-size: 30px;
-  padding: 3px;
+  padding: 3px 15px;
 }
 
 .pureblood,
@@ -309,6 +326,27 @@ i {
   color: #40a2d6;
 }
 
+.inf {
+  display: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  color: white;
+  padding: 10px;
+  background-color: #1c1c1c;
+}
+.pureblood:hover + .purebloodinfo,
+.halfblood:hover + .halfbloodinfo,
+.muggleblood:hover + .mugglebloodinfo,
+.notexpelled:hover + .notexpelledinfo,
+.expelled:hover + .expelledinfo,
+.prefect:hover + .prefectinfo,
+.notprefect:hover + .notprefectinfo,
+.inqsquad:hover + .inqsquadinfo,
+.notinqsquad:hover + .notinqsquadinfo {
+  display: block;
+  position: fixed;
+  cursor: pointer;
+}
 .popupwrap {
   display: grid;
   grid-template-columns: 70% 30%;

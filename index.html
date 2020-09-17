@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Hogwarts list</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -20,7 +20,6 @@
     </div>
   </header>
   <body>
-    <input type="text" id="searchInput" placeholder="Search for names.." />
     <article class="filters">
       <div class="sort">
         <h2>Sort</h2>
@@ -48,7 +47,7 @@
           </button>
         </div>
       </div>
-      <div class="filterbymovie">
+      <div class="filter">
         <h2>Filter</h2>
         <div class="filteringoptions">
           <button
@@ -110,6 +109,10 @@
           <button data-filter="*" class="filterbutton">All</button>
         </div>
       </div>
+      <div class="searchwrapper">
+        <h2>Search</h2>
+        <input type="text" id="searchInput" placeholder="Search for names.." />
+      </div>
     </article>
     <template id="studenttemplate">
       <div class="onestudent">
@@ -129,14 +132,27 @@
             <p class="namepopup">Harry Potter</p>
             <div class="icons">
               <i class="fas fa-tint pureblood"></i>
+              <p class="purebloodinfo inf">This student is pureblood.</p>
               <i class="fas fa-burn halfblood"></i>
+              <p class="halfbloodinfo inf">This student is halfblood.</p>
               <i class="fas fa-tint-slash muggleblood"></i>
+              <p class="mugglebloodinfo inf">This student is muggleborn.</p>
               <i class="fas fa-check notexpelled"></i>
+              <p class="notexpelledinfo inf">This student is not expelled.</p>
               <i class="fas fa-times expelled"></i>
+              <p class="expelledinfo inf">This student is expelled.</p>
               <i class="fas fa-crown prefect"></i>
+              <p class="prefectinfo inf">This student is a prefect.</p>
               <i class="fas fa-crown notprefect"></i>
+              <p class="notprefectinfo inf">This student is not a prefect.</p>
               <i class="fas fa-eye inqsquad"></i>
+              <p class="inqsquadinfo inf">
+                This student is in Inquisitorial squad
+              </p>
               <i class="fas fa-eye-slash notinqsquad"></i>
+              <p class="notinqsquadinfo inf">
+                This student is not in Inquisitorial squad.
+              </p>
             </div>
           </div>
           <div class="actions">
