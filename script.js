@@ -33,13 +33,17 @@ const settings = {
 
 function start() {
   console.log("ready");
-
-  // TODO: Add event-listeners to filter and sort buttons
-  loadJSON(
+  const firstPromise = loadJSON(
     "https://petlatkea.dk/2020/hogwarts/families.json",
     prepareBloodArrays
   );
-  loadJSON("https://petlatkea.dk/2020/hogwarts/students.json", prepareObjects);
+  const secondPromise = loadJSON(
+    "https://petlatkea.dk/2020/hogwarts/students.json",
+    prepareObjects
+  );
+  Promise.all([firstPromise, secondPromise]).then((values) => {
+    console.log(values);
+  });
 }
 
 function loadJSON(url, prepare) {
@@ -221,6 +225,12 @@ function filterList(filteredList) {
     filteredList = expelledStudents;
   } else {
     filteredList = allStudents;
+  }
+
+  if (filteredList.length === 0) {
+    document.querySelector(".nomatch").classList.remove("hide");
+  } else {
+    document.querySelector(".nomatch").classList.add("hide");
   }
 
   //console.log(filteredList);
@@ -477,9 +487,14 @@ function performAnAction(student) {
 
 //expelling a student
 function expelTheStudent(student) {
+  const expelInfo = document.querySelector(".actioninfo");
+  const expelInfoContent = document.querySelector(".actioninfo .infocontent");
   const indexOfStudent = allStudents.indexOf(student);
   const expelledStudent = allStudents.splice(indexOfStudent, 1);
   expelledStudent[0].expelled = "yes";
+  expelInfoContent.textContent =
+    student.firstName + " is now expelled from Hogwarts.";
+  expelInfo.style.display = "block";
   console.log(expelledStudent[0].bloodstatus);
   expelledStudents.push(expelledStudent[0]);
 }
@@ -498,6 +513,8 @@ function makeOrRevokePrefect(student) {
       prefInfo.style.display = "block";
     } else if (prefectHouseArray.length < 2 && student.prefect == "no") {
       student.prefect = "yes";
+      prefInfoContent.textContent = student.firstName + " is now a prefect!";
+      prefInfo.style.display = "block";
       prefectArray.push(student);
       prefectHouseArray = prefectArray.filter(
         (student) => student.house === studentHouse
@@ -517,6 +534,9 @@ function makeOrRevokePrefect(student) {
       prefInfo.style.display = "block";
     } else if (student.prefect == "yes") {
       student.prefect = "no";
+      prefInfoContent.textContent =
+        student.firstName + " is now removed as a prefect!";
+      prefInfo.style.display = "block";
       const indexOfStudent = prefectArray.indexOf(student);
       prefectArray.splice(indexOfStudent, 1);
       console.log(prefectArray);
@@ -532,13 +552,16 @@ function addInqMember(student) {
     student.inqmember == "no"
   ) {
     student.inqmember = "yes";
+    inqInfoContent.textContent =
+      student.firstName + " is now a member of inquisitorial squad!";
+    inqInfo.style.display = "block";
   } else if (student.bloodstatus !== "pureblood") {
     inqInfoContent.textContent =
-      "Only pureblood or Slytherin students can be members of inquisitorial squad";
+      "Only pureblood or Slytherin students can be members of inquisitorial squad.";
     inqInfo.style.display = "block";
   } else if (student.inqmember == "yes") {
     inqInfoContent.textContent =
-      "This student is already a member of inquisitorial squad";
+      "This student is already a member of inquisitorial squad.";
     inqInfo.style.display = "block";
   }
 }
@@ -548,10 +571,13 @@ function removeInqMember(student) {
   const inqInfoContent = document.querySelector(".actioninfo .infocontent");
   if (student.inqmember == "no") {
     inqInfoContent.textContent =
-      "This student is not a member of inquisitorial squad";
+      "This student is not a member of inquisitorial squad.";
     inqInfo.style.display = "block";
   } else if (student.inqmember == "yes") {
     student.inqmember = "no";
+    inqInfoContent.textContent =
+      student.firstName + " is now removed from inquisitorial squad!";
+    inqInfo.style.display = "block";
   }
 }
 
