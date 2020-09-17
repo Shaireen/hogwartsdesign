@@ -4,9 +4,167 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="icons/all.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
+  <header>
+    <div class="imagecontainer">
+      <div class="headimg"></div>
+      <img src="mainimages/ClipartKey_77921.png" class="crestimg" />
+      <div class="headertext">Hogwarts school</div>
+      <div class="headersubtext">List of students</div>
+    </div>
+  </header>
   <body>
+    <input type="text" id="searchInput" placeholder="Search for names.." />
+    <article class="filters">
+      <div class="sort">
+        <h2>Sort</h2>
+        <div class="sortoptions">
+          <button
+            class="sortbutton"
+            data-sort-direction="asc"
+            data-sort="firstName"
+          >
+            Name <span>(a-z)</span>
+          </button>
+          <button
+            class="sortbutton"
+            data-sort-direction="asc"
+            data-sort="lastName"
+          >
+            Last name <span>(a-z)</span>
+          </button>
+          <button
+            class="sortbutton"
+            data-sort-direction="asc"
+            data-sort="house"
+          >
+            House <span>(a-z)</span>
+          </button>
+        </div>
+      </div>
+      <div class="filterbymovie">
+        <h2>Filter</h2>
+        <div class="filteringoptions">
+          <button
+            data-filter-property="expelled"
+            data-filter="yes"
+            class="filterbutton"
+          >
+            Expelled
+          </button>
+          <button
+            data-filter-property="expelled"
+            data-filter="no"
+            class="filterbutton"
+          >
+            Not expelled
+          </button>
+          <button
+            data-filter-property="inqmember"
+            data-filter="yes"
+            class="filterbutton"
+          >
+            Inquisitorial squad
+          </button>
+          <button
+            data-filter-property="prefect"
+            data-filter="yes"
+            class="filterbutton"
+          >
+            Prefects
+          </button>
+          <button
+            data-filter-property="house"
+            data-filter="Gryffindor"
+            class="filterbutton"
+          >
+            Gryffindor
+          </button>
+          <button
+            data-filter-property="house"
+            data-filter="Hufflepuff"
+            class="filterbutton"
+          >
+            Hufflepuff
+          </button>
+          <button
+            data-filter-property="house"
+            data-filter="Ravenclaw"
+            class="filterbutton"
+          >
+            Ravenclaw
+          </button>
+          <button
+            data-filter-property="house"
+            data-filter="Slytherin"
+            class="filterbutton"
+          >
+            Slytherin
+          </button>
+          <button data-filter="*" class="filterbutton">All</button>
+        </div>
+      </div>
+    </article>
+    <template id="studenttemplate">
+      <div class="onestudent">
+        <div class="studentwrapper">
+          <div class="housebackground">
+            <img class="studentimage" src="" />
+          </div>
+          <p class="name">Harry Potter</p>
+        </div>
+      </div>
+      <div class="popup">
+        <div class="popupcontent">
+          <div class="housebackgroundpopup">
+            <img class="studentimagepopup" src="" />
+          </div>
+          <div class="popupwrap">
+            <p class="namepopup">Harry Potter</p>
+            <div class="icons">
+              <i class="fas fa-tint pureblood"></i>
+              <i class="fas fa-burn halfblood"></i>
+              <i class="fas fa-tint-slash muggleblood"></i>
+              <i class="fas fa-check notexpelled"></i>
+              <i class="fas fa-times expelled"></i>
+              <i class="fas fa-crown prefect"></i>
+              <i class="fas fa-crown notprefect"></i>
+              <i class="fas fa-eye inqsquad"></i>
+              <i class="fas fa-eye-slash notinqsquad"></i>
+            </div>
+          </div>
+          <div class="actions">
+            <label id="theme-changer">
+              <p>Choose an action</p>
+              <select name="studentaction" id="actiondropdown">
+                <option value="expel">Expel this student</option>
+                <option value="makeprefect">Make a prefect</option>
+                <option value="revokeprefect">Revoke as prefect</option>
+                <option value="addinquisition">Add to inquisition</option>
+                <option value="removeinquisition">
+                  Remove from inquisition
+                </option>
+              </select>
+            </label>
+            <button class="confirm">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div class="actioninfo">
+      <p class="infocontent">
+        Only two students from each house can be prefects. If you wish to
+        appoint a new one, you must revoke other student's prefect status first.
+      </p>
+    </div>
+
+    <article class="allstudents"></article>
     <script src="script.js"></script>
   </body>
 </html>

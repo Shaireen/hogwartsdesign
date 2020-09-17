@@ -5,3 +5,505 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Nunito+Sans:wght@300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* variables to avoid redundant code */
+:root {
+  --darkred: #7a2228;
+  --mixedgray: #00121e;
+  --beige: #bb8600;
+  --brightbeige: #beabac;
+  --black: #000000;
+  --white: #ffffff;
+}
+
+/* main styling */
+body {
+  background-color: var(--black);
+  overflow-x: hidden;
+}
+.imagecontainer {
+  position: relative;
+  text-align: center;
+}
+.headimg {
+  height: 100vh;
+  background-image: url("mainimages/bgblur.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%);
+  position: relative;
+  z-index: -1;
+}
+
+.crestimg {
+  height: 30vh;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.headertext {
+  font-family: "harry_pregular";
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.headersubtext {
+  font-family: "harry_pregular";
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+nav {
+  height: 80px;
+  font-family: "harry_pregular";
+  font-weight: normal;
+  font-size: 3.5rem;
+  color: var(--beige);
+  padding: 5px;
+  text-align: center;
+}
+
+h1 {
+  padding: 2rem;
+  font-family: "Crimson Text", sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brightbeige);
+  letter-spacing: 7px;
+}
+
+h2 {
+  padding: 2rem 0 1rem 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--brightbeige);
+}
+
+h3 {
+  font-weight: normal;
+}
+
+p {
+  padding: 0.25rem;
+  font-weight: 700;
+}
+
+p span {
+  font-weight: 400;
+}
+
+/* fade in effect */
+.fade-in {
+  animation: fadeIn ease-in 0.6s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* fade out effect */
+.fade-out {
+  animation: fadeOut ease-in 0.6s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* styling for the filters area */
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+.sortoptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+}
+
+.filteringoptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+}
+
+.sortbutton {
+  color: white;
+  padding: 0.4rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.letterfilter:hover,
+.showall:hover {
+  cursor: pointer;
+  color: var(--beige);
+}
+
+/* styling for main area with actors list */
+
+.allstudents {
+  font-family: "Crimson Text", serif;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+  color: var(--brightbeige);
+}
+
+.onestudent {
+  user-select: none;
+  margin: 20px auto;
+  background: var(--black);
+  color: #b3b8cd;
+  border-radius: 5px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0px 10px 10px rgba(20, 20, 20, 0.75);
+}
+
+.housebackground {
+  height: 160px;
+  width: 100%;
+  border-radius: 5px 5px 0z 0;
+}
+
+.housebackgroundpopup {
+  background-size: cover;
+  background-position-x: center;
+  height: 290px;
+  width: 100%;
+  border-radius: 5px 5px 0z 0;
+}
+
+.studentimagepopup {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: 190px 0 0 30px;
+  border: 1px solid #1f1a32;
+  padding: 7px;
+  background: var(--black);
+}
+
+.studentimage {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin: 93px 0 0 -185px;
+  border: 1px solid #1f1a32;
+  padding: 7px;
+  background: var(--black);
+}
+
+.name {
+  font-family: "harry_pregular";
+  font-weight: normal;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  margin: 15px 0 15px 130px;
+  color: var(--white);
+}
+
+.namepopup {
+  font-family: "harry_pregular";
+  font-weight: normal;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  margin: 5px 0 15px 200px;
+  color: var(--white);
+}
+
+.house {
+  text-transform: uppercase;
+  font-family: "Crimson Text", serif;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 100px;
+  padding: 0.5rem;
+  margin: 5px;
+}
+
+i {
+  font-size: 30px;
+  padding: 3px;
+}
+
+.pureblood,
+.halfblood,
+.notexpelled {
+  color: #40d64f;
+}
+
+.muggleblood,
+.expelled {
+  color: #d64040;
+}
+
+.prefect {
+  color: #d6b640;
+}
+
+.notprefect,
+.notinqsquad {
+  color: rgba(125, 125, 125, 0.6);
+}
+
+.inqsquad {
+  color: #40a2d6;
+}
+
+.popupwrap {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.studentwrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.readmore {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 15px;
+  width: 100%;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.filterbutton {
+  padding: 7px 5px;
+  margin: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+label {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.confirm {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 15px;
+  width: 100%;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+}
+
+#actiondropdown {
+  width: 100%;
+  height: 30px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+
+/* popup styling */
+
+.popup,
+.actioninfo {
+  display: none;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 0;
+  padding: 0;
+}
+
+.popupcontent,
+.infocontent {
+  background-color: var(--black);
+  margin: 15% auto;
+  box-shadow: 0 0px 10px 10px rgba(20, 20, 20, 0.75);
+  border-radius: 10px;
+  width: 40%;
+  transition: all 0.5s;
+}
+
+.infocontent {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+  padding: 15px;
+}
+
+.popupcontent .popuptext {
+  font-weight: 400;
+}
+
+/* popup styling for movie themes */
+
+.hide {
+  display: none;
+}
+
+/* media query for smaller screens */
+
+@media screen and (max-width: 1370px) {
+  .popupwrap {
+    grid-template-columns: 100%;
+    grid-auto-flow: row;
+  }
+
+  .icons {
+    justify-content: space-between;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .popupcontent {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 710px) {
+  .headertext {
+    top: 65%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  nav {
+    font-size: 1.6rem;
+    height: 60px;
+  }
+
+  .popupcontent {
+    width: 80%;
+  }
+
+  .housebackgroundpopup {
+    background-size: cover;
+    background-position-x: center;
+    height: 250px;
+    width: 100%;
+    border-radius: 5px 5px 0z 0;
+  }
+
+  .studentimagepopup {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin: 190px 0 0 30px;
+    border: 1px solid #1f1a32;
+    padding: 7px;
+    background: var(--black);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .allstudents {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .onestudent {
+    width: 280px;
+  }
+
+  .studentimage {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 93px 0 0 -155px;
+    border: 1px solid #1f1a32;
+    padding: 7px;
+    background: var(--black);
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .filters {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
