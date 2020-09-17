@@ -77,6 +77,35 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.downArrow {
+  position: absolute;
+  font-size: 60px;
+  z-index: 10;
+  left: 48%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  color: white;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-30px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
 button {
   cursor: pointer;
 }
@@ -255,6 +284,59 @@ p span {
   background: var(--black);
 }
 
+/* house specific styling */
+
+/*hufflepuff*/
+.namepopup.hufflepuff {
+  color: #ba8f2b;
+}
+
+.confirm.hufflepuff {
+  background: #ba8f2b;
+  color: black;
+}
+
+.actions p.hufflepuff {
+  color: #ba8f2b;
+}
+
+/*slytherin*/
+.namepopup.slytherin,
+.actions p.slytherin {
+  color: #248c58;
+}
+
+.confirm.slytherin {
+  background: #248c58;
+  color: black;
+}
+
+/* gryffindor */
+.namepopup.gryffindor {
+  color: #ad3241;
+}
+
+.actions p.gryffindor {
+  color: #ba8f2b;
+}
+
+.confirm.gryffindor {
+  background: #ad3241;
+  color: black;
+}
+
+/* ravenclaw */
+
+.namepopup.ravenclaw,
+.actions p.ravenclaw {
+  color: #2f4dd4;
+}
+
+.confirm.ravenclaw {
+  background: #2f4dd4;
+  color: black;
+}
+
 .studentimage {
   height: 120px;
   width: 120px;
@@ -395,7 +477,7 @@ label {
 }
 .confirm {
   font-family: "Nunito Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   letter-spacing: 4px;
   font-size: 18px;
   text-transform: uppercase;
@@ -413,7 +495,7 @@ label {
   font-weight: 400;
   text-transform: uppercase;
   background-color: black;
-  color: white;
+  color: #9e9e9e;
   font-size: 18px;
 }
 
@@ -476,16 +558,35 @@ label {
     justify-content: space-between;
     height: 50px;
   }
+
+  .downArrow {
+    left: 47%;
+  }
 }
 
 @media screen and (max-width: 1000px) {
   .popupcontent {
     width: 70%;
   }
+  .downArrow {
+    left: 45%;
+  }
 }
+
 @media screen and (max-width: 710px) {
+  .crestimg {
+    top: 28%;
+  }
   .headertext {
-    top: 65%;
+    top: 67%;
+  }
+
+  .headersubtext {
+    top: 51%;
+  }
+
+  .downArrow {
+    left: 43%;
   }
 }
 
@@ -495,6 +596,11 @@ label {
     height: 60px;
   }
 
+  .namepopup {
+    width: 100%;
+    margin: 50px 0 15px 5px;
+  }
+
   .popupcontent {
     width: 80%;
   }
@@ -502,7 +608,7 @@ label {
   .housebackgroundpopup {
     background-size: cover;
     background-position-x: center;
-    height: 250px;
+    height: 220px;
     width: 100%;
     border-radius: 5px 5px 0z 0;
   }
@@ -511,10 +617,14 @@ label {
     height: 120px;
     width: 120px;
     border-radius: 50%;
-    margin: 190px 0 0 30px;
+    margin: 140px 0 0 30px;
     border: 1px solid #1f1a32;
     padding: 7px;
     background: var(--black);
+  }
+
+  .downArrow {
+    left: 41.5%;
   }
 }
 
@@ -527,6 +637,14 @@ label {
     width: 280px;
   }
 
+  .namepopup {
+    font-size: 2.2rem;
+  }
+
+  i {
+    font-size: 20px;
+  }
+
   .studentimage {
     height: 100px;
     width: 100px;
@@ -537,11 +655,20 @@ label {
     background: var(--black);
   }
 
+  .actions p,
+  #actiondropdown {
+    font-size: 16px;
+  }
+
   .name {
     font-size: 2.2rem;
   }
 
   .filters {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .downArrow {
+    left: 38%;
   }
 }

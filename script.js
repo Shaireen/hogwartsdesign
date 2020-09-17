@@ -12,9 +12,9 @@ let prefectArray = [];
 // The prototype for all animals:
 const Student = {
   firstName: "",
-  middleName: "unknown",
+  middleName: undefined,
   lastName: "no last name provided",
-  nickName: "this student has no nickname",
+  nickName: undefined,
   photo: "photo unavailable",
   house: "not assigned to any house",
   expelled: "no",
@@ -60,6 +60,7 @@ function prepareObjects(jsonData) {
   getFilterButtons();
   getSortButtons();
   searchListener();
+  countStudents();
 }
 
 function prepareBloodArrays(jsonData) {
@@ -274,6 +275,7 @@ function buildListofStudents(allStudents) {
   const currentList = filterList(allStudents);
   sortedList = sortList(currentList);
   displayList(sortedList);
+  countStudents();
 }
 
 function addIcons(student, clone) {
@@ -329,14 +331,44 @@ function displayStudent(student) {
     .content.cloneNode(true);
 
   // set clone data
-  if (student.lastName) {
+  if (student.middleName) {
+    clone.querySelector(".name").textContent = clone.querySelector(
+      ".name"
+    ).textContent =
+      student.firstName + " " + student.middleName + " " + student.lastName;
+  } else if (student.nickName) {
+    clone.querySelector(".name").textContent = clone.querySelector(
+      ".name"
+    ).textContent =
+      student.firstName + " " + student.nickName + " " + student.lastName;
+  } else if (student.lastName == undefined) {
+    clone.querySelector(".name").textContent = student.firstName;
+  } else {
+    clone.querySelector(".name").textContent =
+      student.firstName + " " + student.lastName;
+  }
+  /* if (student.lastName) {
     clone.querySelector(".name").textContent =
       student.firstName + " " + student.lastName;
   } else {
     clone.querySelector(".name").textContent = student.firstName;
+  } */
+  if (student.middleName) {
+    clone.querySelector(
+      ".popupwrap .namepopup"
+    ).textContent = clone.querySelector(".name").textContent =
+      student.firstName + " " + student.middleName + " " + student.lastName;
+  } else if (student.nickName) {
+    clone.querySelector(".namepopup").textContent = clone.querySelector(
+      ".namepopup"
+    ).textContent =
+      student.firstName + " " + student.nickName + " " + student.lastName;
+  } else if (student.lastName == undefined) {
+    clone.querySelector(".namepopup").textContent = student.firstName;
+  } else {
+    clone.querySelector(".namepopup").textContent =
+      student.firstName + " " + student.lastName;
   }
-  clone.querySelector(".popupwrap .namepopup").textContent =
-    student.firstName + " " + student.lastName;
   clone.querySelector(".studentimage").src = student.photo;
   clone.querySelector(".studentimagepopup").src = student.photo;
 
@@ -354,6 +386,7 @@ function displayStudent(student) {
   createButton(clone);
   popUpOpenAndClose(clone);
   setStudentHouseBackground(clone, student);
+  addStyling(student, clone);
   addIcons(student, clone);
 
   // append clone to list
@@ -400,6 +433,17 @@ function setStudentHouseBackground(clone, student) {
     "url(mainimages/" + student.house.toLowerCase() + "small.jpg)";
   clone.querySelector(".housebackgroundpopup").style.backgroundImage =
     "url(mainimages/" + student.house.toLowerCase() + ".jpg)";
+}
+
+function addStyling(student, clone) {
+  const dropdownHeading = clone.querySelector(".actions p");
+  const popupName = clone.querySelector(".namepopup");
+  const popupButton = clone.querySelector(".confirm");
+  const houseLowercase = student.house.toLowerCase();
+
+  dropdownHeading.classList.add(houseLowercase);
+  popupName.classList.add(houseLowercase);
+  popupButton.classList.add(houseLowercase);
 }
 
 //set the chosen value from dropdown as global variable
@@ -539,9 +583,31 @@ function searchResults() {
       .textContent.toUpperCase();
     if (studentName.indexOf(filter) > -1) {
       searchStudents[i].style.display = "block";
+      searchStudents[i].classList.remove("notvisible");
     } else {
       searchStudents[i].style.display = "none";
+      searchStudents[i].classList.add("notvisible");
     }
-    console.log(studentName);
   }
+  countStudents();
+}
+
+function countStudents() {
+  let numberOfExpelled = expelledStudents.length;
+  let numberOrAll = allStudents.length;
+  let gryffindorNumber = allStudents.filter(
+    (student) => student.house === "Gryffindor"
+  ).length;
+  let slytherinNumber = allStudents.filter(
+    (student) => student.house === "Slytherin"
+  ).length;
+  let hufflepuffNumber = allStudents.filter(
+    (student) => student.house === "Hufflepuff"
+  ).length;
+  let ravenclawNumber = allStudents.filter(
+    (student) => student.house === "Ravenclaw"
+  ).length;
+  let numberOfDisplayed =
+    document.querySelectorAll(".onestudent").length -
+    document.querySelectorAll(".notvisible").length;
 }
