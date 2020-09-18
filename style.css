@@ -20,13 +20,11 @@
   --mixedgray: #00121e;
   --beige: #bb8600;
   --brightbeige: #beabac;
-  --black: #000000;
-  --white: #ffffff;
 }
 
 /* main styling */
 body {
-  background-color: var(--black);
+  background-color: black;
   overflow-x: hidden;
 }
 .imagecontainer {
@@ -58,7 +56,7 @@ body {
   font-size: 3rem;
   font-weight: 400;
   text-transform: uppercase;
-  color: var(--white);
+  color: white;
   position: absolute;
   left: 50%;
   top: 60%;
@@ -70,7 +68,7 @@ body {
   font-size: 1.7rem;
   font-weight: 400;
   text-transform: uppercase;
-  color: var(--white);
+  color: white;
   position: absolute;
   left: 50%;
   top: 55%;
@@ -108,26 +106,6 @@ body {
 
 button {
   cursor: pointer;
-}
-nav {
-  height: 80px;
-  font-family: "harry_pregular";
-  font-weight: normal;
-  font-size: 3.5rem;
-  color: var(--beige);
-  padding: 5px;
-  text-align: center;
-}
-
-h1 {
-  padding: 2rem;
-  font-family: "Crimson Text", sans-serif;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--brightbeige);
-  letter-spacing: 7px;
 }
 
 h2 {
@@ -186,20 +164,6 @@ p span {
 
 /* styling for the filters area */
 
-#searchInput {
-  height: 40px;
-  padding: 5px;
-  border: none;
-  width: 90%;
-  margin: 10px;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  background: #1c1c1c;
-  color: white;
-}
-
 .filters {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -219,6 +183,25 @@ p span {
   padding: 0 1.5rem;
 }
 
+.filterbutton {
+  padding: 7px 5px;
+  margin: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.filterbutton:hover,
+.filterbutton.active {
+  font-weight: 700;
+  box-shadow: 0 0px 3px 3px rgba(255, 255, 255, 0.4);
+}
+
 .sortbutton {
   color: white;
   padding: 0.4rem;
@@ -234,13 +217,41 @@ p span {
   margin-bottom: 0;
 }
 
-.letterfilter:hover,
-.showall:hover {
-  cursor: pointer;
-  color: var(--beige);
+.sortbutton.active {
+  font-weight: 700;
 }
 
-/* styling for main area with actors list */
+#searchInput {
+  height: 40px;
+  padding: 5px;
+  border: none;
+  width: 90%;
+  margin: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  background: #1c1c1c;
+  color: white;
+}
+
+.numberdisplay {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  padding: 5px;
+  margin: 10px;
+}
+
+.numberdisplay p {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--brightbeige);
+}
+
+/* styling for main area with students list */
 
 .allstudents {
   font-family: "Crimson Text", serif;
@@ -252,7 +263,7 @@ p span {
 .onestudent {
   user-select: none;
   margin: 20px auto;
-  background: var(--black);
+  background: black;
   color: #b3b8cd;
   border-radius: 5px;
   width: 350px;
@@ -260,10 +271,66 @@ p span {
   box-shadow: 0 0px 10px 10px rgba(20, 20, 20, 0.75);
 }
 
+.studentwrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.studentimage {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin: 93px 0 0 -185px;
+  border: 1px solid #1f1a32;
+  padding: 7px;
+  background: black;
+}
+
+.name {
+  font-family: "harry_pregular";
+  font-weight: normal;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  margin: 15px 0 15px 130px;
+  color: white;
+}
+
 .housebackground {
   height: 160px;
   width: 100%;
   border-radius: 5px 5px 0z 0;
+}
+
+.readmore {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 15px;
+  width: 100%;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.readmore:hover {
+  font-weight: 700;
+  box-shadow: 0 0px 3px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* pop up styling */
+
+.popupcontent {
+  background-color: black;
+  margin: 15% auto;
+  box-shadow: 0 0px 10px 10px rgba(20, 20, 20, 0.75);
+  border-radius: 10px;
+  width: 40%;
+  transition: all 0.5s;
 }
 
 .housebackgroundpopup {
@@ -281,7 +348,63 @@ p span {
   margin: 190px 0 0 30px;
   border: 1px solid #1f1a32;
   padding: 7px;
-  background: var(--black);
+  background: black;
+}
+
+.popupwrap {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.namepopup {
+  font-family: "harry_pregular";
+  font-weight: normal;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  margin: 5px 0 15px 200px;
+  color: white;
+}
+
+.popupcontent .popuptext {
+  font-weight: 400;
+}
+
+label {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#actiondropdown {
+  width: 100%;
+  height: 30px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  background-color: black;
+  color: #9e9e9e;
+  font-size: 18px;
+}
+
+.confirm {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 4px;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 15px;
+  width: 100%;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+}
+
+.confirm:hover {
+  font-size: 20px;
+  box-shadow: 0 0px 3px 3px rgba(255, 255, 255, 0.4);
 }
 
 /* house specific styling */
@@ -337,38 +460,7 @@ p span {
   color: black;
 }
 
-.studentimage {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  margin: 93px 0 0 -185px;
-  border: 1px solid #1f1a32;
-  padding: 7px;
-  background: var(--black);
-}
-
-.name {
-  font-family: "harry_pregular";
-  font-weight: normal;
-  font-size: 2.5rem;
-  padding: 0.5rem;
-  margin: 15px 0 15px 130px;
-  color: var(--white);
-}
-
-.namepopup {
-  font-family: "harry_pregular";
-  font-weight: normal;
-  font-size: 2.5rem;
-  padding: 0.5rem;
-  margin: 5px 0 15px 200px;
-  color: var(--white);
-}
-
-.house {
-  text-transform: uppercase;
-  font-family: "Crimson Text", serif;
-}
+/* icons section styling */
 
 .icons {
   display: flex;
@@ -429,77 +521,8 @@ i {
   position: fixed;
   cursor: pointer;
 }
-.popupwrap {
-  display: grid;
-  grid-template-columns: 70% 30%;
-}
 
-.studentwrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.readmore {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 300;
-  letter-spacing: 4px;
-  font-size: 18px;
-  text-transform: uppercase;
-  padding: 15px;
-  width: 100%;
-  background: #1c1c1c;
-  color: white;
-  border: none;
-  margin-top: auto;
-  align-self: flex-end;
-}
-
-.filterbutton {
-  padding: 7px 5px;
-  margin: 5px;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 300;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  background: #1c1c1c;
-  color: white;
-  border: none;
-  outline: none;
-}
-
-label {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 300;
-  letter-spacing: 4px;
-  font-size: 20px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.confirm {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 600;
-  letter-spacing: 4px;
-  font-size: 18px;
-  text-transform: uppercase;
-  padding: 15px;
-  width: 100%;
-  background: #1c1c1c;
-  color: white;
-  border: none;
-}
-
-#actiondropdown {
-  width: 100%;
-  height: 30px;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  background-color: black;
-  color: #9e9e9e;
-  font-size: 18px;
-}
-
-/* popup styling */
+/* popup info styling */
 
 .popup,
 .actioninfo {
@@ -514,15 +537,6 @@ label {
   background-color: rgba(0, 0, 0, 0.4);
   margin: 0;
   padding: 0;
-}
-
-.popupcontent {
-  background-color: var(--black);
-  margin: 15% auto;
-  box-shadow: 0 0px 10px 10px rgba(20, 20, 20, 0.75);
-  border-radius: 10px;
-  width: 40%;
-  transition: all 0.5s;
 }
 
 .infocontent {
@@ -540,8 +554,138 @@ label {
   transition: all 0.5s;
 }
 
-.popupcontent .popuptext {
-  font-weight: 400;
+.infocontent.warning {
+  background-color: #d64040;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* animations for hacking */
+
+.vibrate-1 {
+  -webkit-animation: vibrate-1 0.3s linear infinite both;
+  animation: vibrate-1 0.3s linear infinite both;
+}
+
+.flicker-1 {
+  -webkit-animation: flicker-1 2s linear infinite both;
+  animation: flicker-1 2s linear infinite both;
+}
+
+/* borrowed from https://animista.net/play/attention/vibrate */
+@-webkit-keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+@keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+
+/* borrowed from https://animista.net/play/attention/flicker */
+@-webkit-keyframes flicker-1 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  41.99% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 0;
+  }
+  43.01% {
+    opacity: 1;
+  }
+  47.99% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  49.01% {
+    opacity: 1;
+  }
+}
+@keyframes flicker-1 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  41.99% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 0;
+  }
+  43.01% {
+    opacity: 1;
+  }
+  47.99% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  49.01% {
+    opacity: 1;
+  }
 }
 
 .nomatch {
@@ -588,6 +732,12 @@ label {
   }
   .downArrow {
     left: 45%;
+  }
+
+  .numberdisplay {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }
 
@@ -688,5 +838,9 @@ label {
 
   .downArrow {
     left: 38%;
+  }
+  .numberdisplay {
+    grid-template-columns: 100%;
+    text-align: center;
   }
 }
