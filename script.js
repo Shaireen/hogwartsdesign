@@ -732,33 +732,38 @@ function countStudents() {
 //hacking the system
 //setTimeout(hackTheSystem, 1000);
 function hackTheSystem() {
-  systemWasHacked = true;
+  if (systemWasHacked === false) {
+    systemWasHacked = true;
 
-  const infoContent = document.querySelector(".actioninfo .infocontent");
-  const prefInfo = document.querySelector(".actioninfo");
-  infoContent.textContent = "The system was hacked. NOW IT BELONGS TO MEEE";
-  infoContent.classList.add("warning", "vibrate-1");
-  document.body.classList.add("flicker-1");
-  prefInfo.style.display = "block";
-  // injecting myself into list of students
-  const oneStudent = Object.create(Student);
-  oneStudent.firstName = "Marcelina";
-  oneStudent.lastName = "Jankowska";
-  oneStudent.house = "Ravenclaw";
-  oneStudent.gender = "girl";
-  oneStudent.photo = "photos/jankowska_m.png";
-  allStudents.push(oneStudent);
+    const infoContent = document.querySelector(".actioninfo .infocontent");
+    const prefInfo = document.querySelector(".actioninfo");
+    infoContent.textContent = "The system was hacked. NOW IT BELONGS TO MEEE";
+    infoContent.classList.add("warning");
+    document.body.classList.add("flicker-1");
+    prefInfo.classList.add("vibrate-1");
+    prefInfo.style.display = "block";
+    // injecting myself into list of students
+    const oneStudent = Object.create(Student);
+    oneStudent.firstName = "Marcelina";
+    oneStudent.lastName = "Jankowska";
+    oneStudent.house = "Ravenclaw";
+    oneStudent.gender = "girl";
+    oneStudent.photo = "photos/jankowska_m.png";
+    allStudents.push(oneStudent);
 
-  // ruining bloodstatus algorithm (or rather randomizing)
-  allStudents.forEach((student) => {
-    if (student.bloodstatus === "pureblood") {
-      const bloodValues = ["pureblood", "halfblood", "muggleblood"];
-      student.bloodstatus =
-        bloodValues[Math.floor(Math.random() * bloodValues.length)];
-    } else {
-      student.bloodstatus = "pureblood";
-    }
-  });
-  displayList(allStudents);
-  countStudents();
+    // ruining bloodstatus algorithm (or rather randomizing)
+    allStudents.forEach((student) => {
+      if (student.bloodstatus === "pureblood") {
+        const bloodValues = ["pureblood", "halfblood", "muggleblood"];
+        student.bloodstatus =
+          bloodValues[Math.floor(Math.random() * bloodValues.length)];
+      } else {
+        student.bloodstatus = "pureblood";
+      }
+    });
+    displayList(allStudents);
+    countStudents();
+  } else {
+    console.log("system can be only hacked once");
+  }
 }
