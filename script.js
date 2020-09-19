@@ -11,7 +11,7 @@ let prefectArray = [];
 
 let systemWasHacked = false;
 
-// The prototype for all animals:
+// The prototype for all students:
 const Student = {
   firstName: "",
   middleName: undefined,
@@ -36,18 +36,12 @@ const settings = {
 
 function start() {
   console.log("ready");
-  const firstPromise = loadJSON(
+  loadJSON(
     "https://petlatkea.dk/2020/hogwarts/families.json",
     prepareBloodArrays
   );
-  const secondPromise = loadJSON(
-    "https://petlatkea.dk/2020/hogwarts/students.json",
-    prepareObjects
-  );
-  //make sure that both json files are loaded before going any further
-  Promise.all([firstPromise, secondPromise]).then((values) => {
-    console.log(values);
-  });
+  loadJSON("https://petlatkea.dk/2020/hogwarts/students.json", prepareObjects);
+  //make sure that both json files are loaded before going any further - weell that did not go well,
 }
 
 //load json file
@@ -60,6 +54,7 @@ function loadJSON(url, prepare) {
     });
 }
 
+//delegator for next functions
 function prepareObjects(jsonData) {
   allStudents = jsonData.map(prepareObject);
 
@@ -70,6 +65,7 @@ function prepareObjects(jsonData) {
   countStudents();
 }
 
+//store data about families bloodline
 function prepareBloodArrays(jsonData) {
   pureBloodFamilies = jsonData.pure;
   halfBloodFamilies = jsonData.half;
@@ -164,28 +160,16 @@ function prepareObject(jsonObject) {
     oneStudent.photo = "photos/leanne.jpg";
   }
 
-  // check the blood status of a student
-  if (
-    pureBloodFamilies.includes(oneStudent.lastName) == true &&
-    halfBloodFamilies.includes(oneStudent.lastName) == true
-  ) {
+  if (halfBloodFamilies.includes(oneStudent.lastName) == true) {
     oneStudent.bloodstatus = "halfblood";
-  } else if (
-    pureBloodFamilies.includes(oneStudent.lastName) == true &&
-    halfBloodFamilies.includes(oneStudent.lastName) == false
-  ) {
+  } else if (pureBloodFamilies.includes(oneStudent.lastName) == true) {
     oneStudent.bloodstatus = "pureblood";
-  } else if (
-    pureBloodFamilies.includes(oneStudent.lastName) == false &&
-    halfBloodFamilies.includes(oneStudent.lastName) == true
-  ) {
-    oneStudent.bloodstatus = "halfblood";
   } else {
     oneStudent.bloodstatus = "muggleblood";
   }
-
   console.log(oneStudent.bloodstatus);
   allStudents.push(oneStudent);
+  //determineBloodStatus(oneStudent);
   return oneStudent;
 }
 
@@ -356,7 +340,7 @@ function getFilterBy(event) {
   setFilter(filter, filterProp);
 }
 
-//set the filter property and value to global
+//store filter property and value globally
 function setFilter(filter, filterProp) {
   settings.filterBy = filter;
   settings.filterProperty = filterProp;
@@ -394,6 +378,7 @@ function filterList(filteredList) {
   return filteredList;
 }
 
+//get sorting property and direction
 function getSortBy(event) {
   const sortBy = event.target.dataset.sort;
   const sortDir = event.target.dataset.sortDirection;
@@ -412,12 +397,14 @@ function getSortBy(event) {
   setSort(sortBy, sortDir);
 }
 
+//store filter sorting property and direction globally, toggle the direction
 function setSort(sortBy, sortDir) {
   settings.sortBy = sortBy;
   settings.sortDir = sortDir;
   buildListofStudents();
 }
 
+//sort the students
 function sortList(sortedList) {
   if (settings.sortDir == "asc") {
     sortedList = sortedList.sort(sortAsc);
@@ -650,6 +637,7 @@ function hackRemoveInq(student) {
 
 // call search function
 function searchListener() {
+  let searchStudents = allStudents;
   document
     .querySelector("#searchInput")
     .addEventListener("keyup", searchResults);
@@ -746,7 +734,7 @@ function hackTheSystem() {
     const oneStudent = Object.create(Student);
     oneStudent.firstName = "Marcelina";
     oneStudent.lastName = "Jankowska";
-    oneStudent.house = "Ravenclaw";
+    oneStudent.house = "Hufflepuff";
     oneStudent.gender = "girl";
     oneStudent.photo = "photos/jankowska_m.png";
     allStudents.push(oneStudent);
