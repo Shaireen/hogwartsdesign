@@ -41,7 +41,7 @@ function start() {
     prepareBloodArrays
   );
   loadJSON("https://petlatkea.dk/2020/hogwarts/students.json", prepareObjects);
-  //make sure that both json files are loaded before going any further - weell that did not go well,
+  //make sure that both json files are loaded before going any further - weell that did not go well, tried different solution but could not make them work
 }
 
 //load json file
@@ -469,10 +469,10 @@ function addIcons(student, clone) {
 }
 
 //set the chosen value from dropdown as global variable
-function checkSelectedOption(event) {
+/*function checkSelectedOption(event) {
   settings.chosenValue = event.target.value;
   console.log(settings.chosenValue);
-}
+}*/
 
 //check which action was chosen and call appropriate function
 function performAnAction(student) {
